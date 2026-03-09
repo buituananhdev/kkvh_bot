@@ -1,0 +1,37 @@
+name: Gui Gia Vang Telegram
+
+on:
+  schedule:
+    # Máy chủ GitHub dùng múi giờ UTC. Giờ VN (UTC+7) = Giờ UTC + 7.
+    - cron: '0 1 * * *'    # 08:00 VN
+    - cron: '30 2 * * *'   # 09:30 VN
+    - cron: '0 4 * * *'    # 11:00 VN
+    - cron: '30 5 * * *'   # 12:30 VN
+    - cron: '0 7 * * *'    # 14:00 VN
+    - cron: '30 8 * * *'   # 15:30 VN
+    - cron: '0 10 * * *'   # 17:00 VN
+    - cron: '30 11 * * *'  # 18:30 VN
+    - cron: '0 13 * * *'   # 20:00 VN
+    - cron: '30 14 * * *'  # 21:30 VN
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Cai dat Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Cai dat thu vien
+        run: pip install -r requirements.txt
+        
+      - name: Chay script Python
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+        run: python giavang_bot.py

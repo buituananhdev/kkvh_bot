@@ -3,16 +3,17 @@ name: Gui Gia Vang Telegram
 on:
   schedule:
     # Máy chủ GitHub dùng múi giờ UTC. Giờ VN (UTC+7) = Giờ UTC + 7.
-    - cron: '0 1 * * *'    # 08:00 VN
-    - cron: '30 2 * * *'   # 09:30 VN
-    - cron: '0 4 * * *'    # 11:00 VN
-    - cron: '30 5 * * *'   # 12:30 VN
-    - cron: '0 7 * * *'    # 14:00 VN
-    - cron: '30 8 * * *'   # 15:30 VN
-    - cron: '0 10 * * *'   # 17:00 VN
-    - cron: '30 11 * * *'  # 18:30 VN
-    - cron: '0 13 * * *'   # 20:00 VN
-    - cron: '30 14 * * *'  # 21:30 VN
+    # Đã dời lịch chạy sớm hơn 1 tiếng so với giờ dự kiến để bù trừ delay.
+    - cron: '0 0 * * *'    # Dự kiến chạy lúc 07:00 VN (để nhận tin tầm 08:00)
+    - cron: '30 1 * * *'   # Dự kiến chạy lúc 08:30 VN (để nhận tin tầm 09:30)
+    - cron: '0 3 * * *'    # Dự kiến chạy lúc 10:00 VN (để nhận tin tầm 11:00)
+    - cron: '30 4 * * *'   # Dự kiến chạy lúc 11:30 VN (để nhận tin tầm 12:30)
+    - cron: '0 6 * * *'    # Dự kiến chạy lúc 13:00 VN (để nhận tin tầm 14:00)
+    - cron: '30 7 * * *'   # Dự kiến chạy lúc 14:30 VN (để nhận tin tầm 15:30)
+    - cron: '0 9 * * *'    # Dự kiến chạy lúc 16:00 VN (để nhận tin tầm 17:00)
+    - cron: '30 10 * * *'  # Dự kiến chạy lúc 17:30 VN (để nhận tin tầm 18:30)
+    - cron: '0 12 * * *'   # Dự kiến chạy lúc 19:00 VN (để nhận tin tầm 20:00)
+    - cron: '30 13 * * *'  # Dự kiến chạy lúc 20:30 VN (để nhận tin tầm 21:30)
   workflow_dispatch:
 
 jobs:
